@@ -2,6 +2,8 @@
 <launch>
 
     <node pkg="video_publisher" type="video_publisher" name="video_publisher" output="screen" respawn="false">
-        <param name="input_file" value="$(arg input_file)" />        
+        <param name="input_file" value="$(arg input_file)" />
+        <param name="start_time" type="double" value="0.0" />
+        <param name="stop_time" type="double" value="-1.0" />
     </node>
 </launch>

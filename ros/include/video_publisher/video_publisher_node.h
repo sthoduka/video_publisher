@@ -34,8 +34,15 @@ class VideoPublisherNode
          *
          * @param video_file_path
          * Full path to input video file
+         *
+         * @param start_time
+         * Time in video to start publishing frames from (in milliseconds)
+         *
+         * @param stop_time
+         * Time in video to stop publishing frames (in milliseconds)
+         * Set to negative if frames till the end of the file are to be published
          */
-        void publish_video(const bfs::path &video_file_path);
+        void publish_video(const bfs::path &video_file_path, double start_time, double stop_time);
 
     private:
         /**
