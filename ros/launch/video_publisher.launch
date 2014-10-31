@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node pkg="video_publisher" type="video_publisher" name="video_publisher" output="screen" respawn="false">
+        <param name="input_file" value="$(arg input_file)" />        
+    </node>
+</launch>
