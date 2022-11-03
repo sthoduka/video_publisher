@@ -41,14 +41,14 @@ void VideoPublisherNode::publish_video(const bfs::path &video_file_path, double 
       
     if (!capture.isOpened())
     {
-        ROS_ERROR("Cound not read %s", video_file_path.string().c_str());
+        ROS_ERROR("Could not read %s", video_file_path.string().c_str());
         return;
     }
 
-    double frames_per_second = capture.get(CV_CAP_PROP_FPS);    
+    double frames_per_second = capture.get(cv::CAP_PROP_FPS);    
     ros::Rate loop_rate(frames_per_second);
 
-    capture.set(CV_CAP_PROP_POS_MSEC, start_time);
+    capture.set(cv::CAP_PROP_POS_MSEC, start_time);
 
     cv::Mat frame;
     int number_of_frames = 0;
@@ -67,7 +67,7 @@ void VideoPublisherNode::publish_video(const bfs::path &video_file_path, double 
         frame_msg.image = frame;
         image_publisher_.publish(frame_msg.toImageMsg());
 
-        if (stop_time > 0.0 && capture.get(CV_CAP_PROP_POS_MSEC) >= stop_time)
+        if (stop_time > 0.0 && capture.get(cv::CAP_PROP_POS_MSEC) >= stop_time)
         {
             break;
         }
